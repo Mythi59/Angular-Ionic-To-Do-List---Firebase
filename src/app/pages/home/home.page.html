@@ -9,16 +9,16 @@
         <h1>{{day}} {{month}}</h1>
       </div>
       <div class="date-section">
-        <ion-button fill="clear" class="settings-btn">
-          <ion-icon name="stopwatch-outline"></ion-icon>
+        <ion-button fill="clear" class="settings-btn" (click)="debugTasks()">
+          <ion-icon name="bug-outline"></ion-icon>
         </ion-button>
       </div>
     </div>
 
     <div class="today-section">
       <h2>Hoy</h2>
-      <ion-button class="add-new-btn" (click)="navigateToCreateTask()"
-        >Añadir Tarea
+      <ion-button class="add-new-btn" (click)="navigateToCreateTask()">
+        Añadir Tarea
       </ion-button>
     </div>
     <p>{{countTask}} Tareas</p>
@@ -38,26 +38,35 @@
 
     <!-- Lista de tareas por hora -->
     <div class="timeline">
-      <!-- Ejemplo de tarea -->
-      <div class="task-item" *ngFor="let task of tasks">
-        <div class="time-label">{{task.time}}</div>
-        <div class="task-content">
-          <ion-checkbox [checked]="task.completed"></ion-checkbox>
+      <!-- Tareas del día -->
+      <div
+        class="task-item"
+        *ngFor="let task of todayTasks; trackBy: trackByTaskId"
+        [class.completed]="task.completed"
+      >
+        <div class="time-label">{{ formatTime(task.time) }}</div>
+        <div class="task-content" [class.highlighted]="!task.completed">
+          <ion-checkbox
+            [checked]="task.completed"
+            (ionChange)="toggleTaskComplete(task)"
+          >
+          </ion-checkbox>
           <div class="task-text">
-            <h3>{{task.title}}</h3>
-            <p>{{task.description}}</p>
+            <h3 [class.strike-through]="task.completed">{{ task.title }}</h3>
+            <p *ngIf="task.description">{{ task.description }}</p>
+            <small class="category-badge">{{ task.category }}</small>
           </div>
         </div>
       </div>
 
-      <!-- Tarea por defecto cuando no hay tareas -->
-      <div class="task-item" *ngIf="tasks.length === 0">
-        <div class="time-label">8:00 AM</div>
+      <!-- Mensaje cuando no hay tareas -->
+      <div class="task-item no-tasks" *ngIf="todayTasks.length === 0">
+        <div class="time-label">--:--</div>
         <div class="task-content">
-          <ion-icon name="checkbox-outline"></ion-icon>
+          <ion-icon name="add-circle-outline" color="primary"></ion-icon>
           <div class="task-text">
-            <h3>No hay tareas</h3>
-            <p>Añade tu primera tarea</p>
+            <h3>No hay tareas para hoy</h3>
+            <p>¡Añade tu primera tarea!</p>
           </div>
         </div>
       </div>

@@ -62,6 +62,12 @@
     --padding-bottom: 8px;
     font-size: 14px;
     font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      --background: #f8fafc;
+      transform: translateY(-2px);
+    }
   }
 }
 
@@ -98,7 +104,7 @@
     flex: 1;
 
     .hours-text {
-      color: #64748b; //#acadc1
+      color: #64748b;
       font-size: 14px;
     }
   }
@@ -126,6 +132,26 @@
     align-items: flex-start;
     margin-bottom: 24px;
     position: relative;
+    transition: all 0.3s ease;
+
+    &.completed {
+      opacity: 0.6;
+
+      .task-content {
+        background: #f1f5f9;
+      }
+    }
+
+    &.no-tasks {
+      .task-content {
+        border: 2px dashed #cbd5e1;
+        background: transparent;
+
+        ion-icon {
+          font-size: 24px;
+        }
+      }
+    }
 
     .time-label {
       position: absolute;
@@ -146,6 +172,32 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &.highlighted {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+
+        .task-text {
+          h3,
+          p {
+            color: white;
+          }
+        }
+
+        ion-checkbox {
+          --background: rgba(255, 255, 255, 0.2);
+          --border-color: rgba(255, 255, 255, 0.5);
+          --checkmark-color: white;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
 
       .task-text {
         flex: 1;
@@ -153,8 +205,14 @@
         h3 {
           font-size: 16px;
           font-weight: 600;
-          margin: 0 0 1px 0;
+          margin: 0 0 4px 0;
           color: #1e293b;
+          transition: all 0.3s ease;
+
+          &.strike-through {
+            text-decoration: line-through;
+            opacity: 0.7;
+          }
         }
 
         p {
@@ -167,7 +225,35 @@
       ion-icon {
         color: #1e293b;
         --ionicon-stroke-width: 32px;
+        font-size: 20px;
+      }
+
+      ion-checkbox {
+        --size: 20px;
+        --border-radius: 6px;
+        --border-width: 2px;
+        --border-color: #cbd5e1;
+        --background-checked: #10dc60;
+        --border-color-checked: #10dc60;
+        --checkmark-color: white;
+        margin: 0;
       }
     }
   }
+}
+
+// Animación para nuevas tareas
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-item {
+  animation: slideInUp 0.5s ease-out;
 }
