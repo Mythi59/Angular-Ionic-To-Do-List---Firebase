@@ -1,11 +1,11 @@
 <ion-header class="custom-header">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button fill="clear">
-        <ion-icon name="grid-outline"></ion-icon>
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Create Task</ion-title>
+    <ion-title>Crear Tarea</ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear">
         <ion-icon name="settings-outline"></ion-icon>
@@ -17,34 +17,46 @@
 <ion-content class="create-task-content">
   <!-- Selector de días -->
   <div class="days-selector">
-    <div class="day-item">
-      <span class="day-number">0</span>
-      <span class="day-name">name</span>
+    <div
+      class="day-item"
+      *ngFor="let day of days"
+      [class.active]="selectedDay === day.number"
+      (click)="selectDay(day)"
+    >
+      <span class="day-number">{{ day.number }}</span>
+      <span class="day-name">{{ day.name }}</span>
     </div>
   </div>
 
   <!-- Sección de actividades -->
   <div class="activities-section">
-    <h2>Chose activity</h2>
+    <h2>Elegir categoría</h2>
 
     <div class="activity-list">
-      <div class="activity-item">
-        <div class="activity-icon">
-          <ion-icon></ion-icon>
+      <div
+        class="activity-item"
+        *ngFor="let activity of activities"
+        (click)="selectActivity(activity)"
+      >
+        <div class="activity-icon" [style.background-color]="activity.color">
+          <ion-icon [name]="activity.icon"></ion-icon>
         </div>
         <div class="activity-info">
-          <h3>name</h3>
-          <p>description</p>
+          <h3>{{ activity.name }}</h3>
+          <p>{{ activity.description }}</p>
         </div>
         <ion-icon name="chevron-forward-outline" class="arrow-icon"></ion-icon>
       </div>
     </div>
   </div>
 
-  <!-- FAB Button -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <!-- Información del día seleccionado -->
+  <div class="selected-info" *ngIf="selectedDay">
+    <ion-card>
+      <ion-card-content>
+        <h3>Fecha seleccionada</h3>
+        <p>{{ selectedDate | date:'fullDate':'':'es-ES' }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
