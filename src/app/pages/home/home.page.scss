@@ -1,0 +1,173 @@
+.main-content {
+  --background: #4044c9;
+}
+
+.custom-header {
+  padding: 24px;
+  color: white;
+}
+
+.custom-header p {
+  color: #afbdd1;
+  margin: 0;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .menu-btn {
+    --color: white;
+    --padding-start: 0;
+  }
+
+  .date-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .settings-btn {
+    --color: white;
+    --padding-end: 0;
+  }
+}
+
+.today-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .add-new-btn {
+    --background: #fff;
+    --color: #1e293b;
+    --border-radius: 20px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.tasks-section {
+  background: white;
+  border-radius: 32px 32px 0 0;
+  min-height: 70vh;
+  padding: 24px 16px;
+}
+
+.hours-counter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 16px;
+
+  .hour-badge {
+    background: #4044c9;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hour-number {
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  .hours-info {
+    flex: 1;
+
+    .hours-text {
+      color: #64748b; //#acadc1
+      font-size: 14px;
+    }
+  }
+
+  .day-number {
+    background: #f2f2f2;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+}
+
+.timeline {
+  position: relative;
+  padding-left: 80px;
+
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    position: relative;
+
+    .time-label {
+      position: absolute;
+      left: -80px;
+      width: 70px;
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+      text-align: right;
+      padding-top: 4px;
+    }
+
+    .task-content {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 22px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .task-text {
+        flex: 1;
+
+        h3 {
+          font-size: 16px;
+          font-weight: 600;
+          margin: 0 0 1px 0;
+          color: #1e293b;
+        }
+
+        p {
+          font-size: 12px;
+          color: #64748b;
+          margin: 0;
+        }
+      }
+
+      ion-icon {
+        color: #1e293b;
+        --ionicon-stroke-width: 32px;
+      }
+    }
+  }
+}

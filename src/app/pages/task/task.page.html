@@ -1,0 +1,50 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear">
+        <ion-icon name="grid-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Create Task</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="create-task-content">
+  <!-- Selector de días -->
+  <div class="days-selector">
+    <div class="day-item">
+      <span class="day-number">0</span>
+      <span class="day-name">name</span>
+    </div>
+  </div>
+
+  <!-- Sección de actividades -->
+  <div class="activities-section">
+    <h2>Chose activity</h2>
+
+    <div class="activity-list">
+      <div class="activity-item">
+        <div class="activity-icon">
+          <ion-icon></ion-icon>
+        </div>
+        <div class="activity-info">
+          <h3>name</h3>
+          <p>description</p>
+        </div>
+        <ion-icon name="chevron-forward-outline" class="arrow-icon"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true" class="main-content">
+  <!-- Header personalizado -->
+  <div class="custom-header">
+    <div class="header-top">
+      <ion-button fill="clear" class="menu-btn">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-button>
+      <div class="date-section">
+        <h1>{{day}} {{month}}</h1>
+      </div>
+      <div class="date-section">
+        <ion-button fill="clear" class="settings-btn">
+          <ion-icon name="stopwatch-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="today-section">
+      <h2>Hoy</h2>
+      <ion-button class="add-new-btn">
+        <a> Añadir Tarea</a>
+      </ion-button>
+    </div>
+    <p>{{countTask}} Tareas</p>
+  </div>
+
+  <!-- Sección de horas y tareas -->
+  <div class="tasks-section">
+    <div class="hours-counter">
+      <div class="hour-badge">
+        <span class="hour-number">{{day}}</span>
+      </div>
+      <div class="hours-info">
+        <span class="hours-text">8 hours a day</span>
+      </div>
+      <div class="day-number">{{nextDay}}</div>
+    </div>
+
+    <!-- Lista de tareas por hora -->
+    <div class="timeline">
+      <!-- Tarea completada -->
+      <!-- <div class="task-item completed">
+        <div class="time-label">08:00 AM</div>
+        <div class="task-content">
+          <ion-checkbox checked="true"></ion-checkbox>
+          <div class="task-text">
+            <h3>Buy a pack of coffee</h3>
+            <p>10:30 - 11:00</p>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Tarea activa -->
+      <!-- <div class="task-item active">
+        <div class="time-label">11:30 AM</div>
+        <div class="task-content highlighted">
+          <div class="task-text">
+            <h3>Add new partners</h3>
+            <p>11:30 - 12:30</p>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Tareas siguientes -->
+      <div class="task-item">
+        <div class="time-label">8:00 AM</div>
+        <div class="task-content">
+          <ion-icon name="checkbox-outline"></ion-icon>
+          <div class="task-text">
+            <h3>New project</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
